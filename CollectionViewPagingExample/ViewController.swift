@@ -9,24 +9,34 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    
     let itemColors = [UIColor.red, UIColor.yellow, UIColor.blue, UIColor.green]
+    
+    var currentIndex: CGFloat = 0
+    
+    let lineSpacing: CGFloat = 20
+    
+    let cellRatio: CGFloat = 0.7
+    
+    var isOneStepPaging = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // width, height 설정
-        let cellWidth = view.frame.width - 100
-        let cellHeight = view.frame.height - 100
+        let cellWidth = floor(view.frame.width * cellRatio)
+        let cellHeight = floor(view.frame.height * cellRatio)
         
         // 상하, 좌우 inset value 설정
-        let insetX = (collectionView.bounds.width - cellWidth) / 2.0
-        let insetY = (collectionView.bounds.height - cellHeight) / 2.0
+        let insetX = (view.bounds.width - cellWidth) / 2.0
+        let insetY = (view.bounds.height - cellHeight) / 2.0
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
-        layout.minimumLineSpacing = 15
+        layout.minimumLineSpacing = lineSpacing
         layout.scrollDirection = .horizontal
         collectionView.contentInset = UIEdgeInsets(top: insetY, left: insetX, bottom: insetY, right: insetX)
         
@@ -36,10 +46,7 @@ class ViewController: UIViewController {
         // 스크롤 시 빠르게 감속 되도록 설정
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -54,12 +61,14 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! CollectionViewCell
         cell.backgroundColor = itemColors[indexPath.row]
+        cell.alpha = 0.5
         return cell
     }
+    
 }
 
-extension ViewController : UIScrollViewDelegate
-{
+extension ViewController : UIScrollViewDelegate {
+    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
     {
         // item의 사이즈와 item 간의 간격 사이즈를 구해서 하나의 item 크기로 설정.
@@ -77,8 +86,20 @@ extension ViewController : UIScrollViewDelegate
         // 스크로로 방향을 체크하여 올림,내림을 사용하면 좀 더 자연스러운 페이징 효과를 낼 수 있다.
         if scrollView.contentOffset.x > targetContentOffset.pointee.x {
             roundedIndex = floor(index)
-        } else {
+        } else if scrollView.contentOffset.x < targetContentOffset.pointee.x {
             roundedIndex = ceil(index)
+        } else {
+            roundedIndex = round(index)
+        }
+        
+        if isOneStepPaging {
+            if currentIndex > roundedIndex {
+                currentIndex -= 1
+                roundedIndex = currentIndex
+            } else if currentIndex < roundedIndex {
+                currentIndex += 1
+                roundedIndex = currentIndex
+            }
         }
         
         // 위 코드를 통해 페이징 될 좌표값을 targetContentOffset에 대입하면 된다.

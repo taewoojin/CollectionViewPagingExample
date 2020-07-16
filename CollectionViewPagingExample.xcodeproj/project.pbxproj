@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		748D135F24BC41BF007A47D5 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748D135E24BC41BF007A47D5 /* TestViewController.swift */; };
 		FC552388210185680099FAA4 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC552387210185680099FAA4 /* CollectionViewCell.swift */; };
 		FC95FC9320FED8B700E53C5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC95FC9220FED8B700E53C5E /* AppDelegate.swift */; };
 		FC95FC9520FED8B700E53C5E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC95FC9420FED8B700E53C5E /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		748D135E24BC41BF007A47D5 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		FC552387210185680099FAA4 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		FC95FC8F20FED8B700E53C5E /* CollectionViewPagingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewPagingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC95FC9220FED8B700E53C5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		748D135D24BC3B6F007A47D5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FC95FC9920FED8BA00E53C5E /* Assets.xcassets */,
+				FC95FC9620FED8B700E53C5E /* Main.storyboard */,
+				FC95FC9B20FED8BA00E53C5E /* LaunchScreen.storyboard */,
+				FC95FC9E20FED8BA00E53C5E /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		FC95FC8620FED8B700E53C5E = {
 			isa = PBXGroup;
 			children = (
@@ -79,13 +92,11 @@
 		FC95FC9120FED8B700E53C5E /* CollectionViewPagingExample */ = {
 			isa = PBXGroup;
 			children = (
+				748D135D24BC3B6F007A47D5 /* Supporting Files */,
 				FC95FC9220FED8B700E53C5E /* AppDelegate.swift */,
 				FC95FC9420FED8B700E53C5E /* ViewController.swift */,
+				748D135E24BC41BF007A47D5 /* TestViewController.swift */,
 				FC552387210185680099FAA4 /* CollectionViewCell.swift */,
-				FC95FC9620FED8B700E53C5E /* Main.storyboard */,
-				FC95FC9920FED8BA00E53C5E /* Assets.xcassets */,
-				FC95FC9B20FED8BA00E53C5E /* LaunchScreen.storyboard */,
-				FC95FC9E20FED8BA00E53C5E /* Info.plist */,
 			);
 			path = CollectionViewPagingExample;
 			sourceTree = "<group>";
@@ -202,6 +213,7 @@
 			files = (
 				FC95FC9520FED8B700E53C5E /* ViewController.swift in Sources */,
 				FC95FC9320FED8B700E53C5E /* AppDelegate.swift in Sources */,
+				748D135F24BC41BF007A47D5 /* TestViewController.swift in Sources */,
 				FC552388210185680099FAA4 /* CollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,7 +376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22VQ353X6R;
-				INFOPLIST_FILE = CollectionViewPagingExample/Info.plist;
+				INFOPLIST_FILE = "CollectionViewPagingExample/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -382,7 +394,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22VQ353X6R;
-				INFOPLIST_FILE = CollectionViewPagingExample/Info.plist;
+				INFOPLIST_FILE = "CollectionViewPagingExample/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

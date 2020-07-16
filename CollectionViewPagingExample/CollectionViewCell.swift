@@ -10,7 +10,6 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layer.cornerRadius = 3.0
